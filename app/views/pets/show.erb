@@ -1,1 +1,11 @@
-show.erb
+<h1><%=@pet.name%></h1>
+<h4>Owners:</h4>
+
+  <%@pet.owners.each do |owner|%>
+  <li><%=owner.name%></li>
+  <%end%>
+
+<form action="/pets/<%=@pet.id%>/edit" method="get">
+  <h2>Edit pet</h2>
+  <input type="submit" name="submit" value="Edit Pet">
+</form>
