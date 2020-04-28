@@ -11,7 +11,6 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do 
-
     @pet = Pet.create(name: params[:pet_name])
     if params[:owner_name].length > 0 
       new_owner = Owner.create(name: params[:owner_name])
@@ -27,14 +26,13 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
   
-  get 'pets/:id/edit' do 
+  get '/pets/:id/edit' do 
     @pet = Pet.find(params[:id])
     @owners = Owner.all 
     erb :'/pets/edit'
   end
 
- patch '/pets/:id' do 
-
+ patch '/pets/:id' do
     @pet = Pet.find(params[:id])
     @pet.name = params[:pet_name]
     if params[:owner][:name].length > 0 
